@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Send, Bookmark, MoreHorizontal } from 'lucide-react';
+import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -52,120 +52,121 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const handleSave = () => {
     setSaved(!saved);
     toast({
-      title: saved ? "Post removido" : "Post salvo",
-      description: saved ? "Post removido dos salvos" : "Post salvo na sua coleção",
+      title: saved ? "Post removed" : "Post saved",
+      description: saved ? "Post removed from your collection" : "Post saved to your collection",
     });
   };
 
   const handleComment = () => {
     toast({
-      title: "Comentários",
-      description: "Funcionalidade de comentários em desenvolvimento",
+      title: "Comments",
+      description: "Comment feature coming soon",
     });
   };
 
   const handleShare = () => {
     toast({
-      title: "Compartilhar",
-      description: "Funcionalidade de compartilhamento em desenvolvimento",
+      title: "Share",
+      description: "Share feature coming soon",
     });
   };
 
   return (
-    <Card className="mb-6 border rounded-lg overflow-hidden max-w-xl mx-auto post-card-hover">
+    <Card className="mb-8 overflow-hidden rounded-2xl glass-card post-card-hover">
       <CardHeader className="p-4 flex flex-row items-center space-y-0">
         <div className="flex items-center flex-1">
-          <Avatar className="h-8 w-8 mr-2 ring-2 ring-background">
+          <Avatar className="h-10 w-10 mr-3 ring-2 ring-primary/20">
             <AvatarImage src={post.userImage} alt={post.username} />
             <AvatarFallback>{post.username[0]}</AvatarFallback>
           </Avatar>
           <div>
-            <p className="text-sm font-medium">{post.username}</p>
+            <p className="font-medium">{post.username}</p>
+            <p className="text-xs text-muted-foreground">{post.timestamp}</p>
           </div>
         </div>
-        <Button variant="ghost" size="icon" className="h-8 w-8">
+        <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
           <MoreHorizontal className="h-5 w-5" />
         </Button>
       </CardHeader>
       
       <CardContent className="p-0">
         <div 
-          className="aspect-square relative bg-muted"
+          className="aspect-square relative bg-muted overflow-hidden"
           onDoubleClick={handleDoubleTapLike}
         >
           <img
             src={post.image}
             alt={post.caption}
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transition-all duration-500 hover:scale-105"
           />
           {isLikeAnimating && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <Heart className="h-24 w-24 text-white filter drop-shadow-lg animate-heart-pulse fill-red-500" />
+              <Heart className="h-24 w-24 text-white filter drop-shadow-lg animate-heart-pulse fill-primary" />
             </div>
           )}
         </div>
       </CardContent>
       
       <CardFooter className="flex flex-col items-start p-4">
-        <div className="flex items-center justify-between w-full mb-2">
-          <div className="flex space-x-4">
+        <div className="flex items-center justify-between w-full mb-3">
+          <div className="flex space-x-2">
             <Button 
               variant="ghost" 
               size="icon" 
-              className="h-8 w-8 p-0" 
+              className="h-9 w-9 rounded-full hover:bg-primary/10" 
               onClick={handleLike}
             >
               <Heart 
-                className={`h-6 w-6 ${liked ? 'fill-red-500 text-red-500' : ''}`} 
+                className={`h-5 w-5 ${liked ? 'fill-primary text-primary' : ''}`} 
                 fill={liked ? "currentColor" : "none"}
               />
             </Button>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="h-8 w-8 p-0" 
+              className="h-9 w-9 rounded-full hover:bg-primary/10" 
               onClick={handleComment}
             >
-              <MessageCircle className="h-6 w-6" />
+              <MessageCircle className="h-5 w-5" />
             </Button>
             <Button 
               variant="ghost" 
               size="icon" 
-              className="h-8 w-8 p-0" 
+              className="h-9 w-9 rounded-full hover:bg-primary/10" 
               onClick={handleShare}
             >
-              <Send className="h-6 w-6" />
+              <Share2 className="h-5 w-5" />
             </Button>
           </div>
           <Button 
             variant="ghost" 
             size="icon" 
-            className="h-8 w-8 p-0 ml-auto" 
+            className="h-9 w-9 rounded-full hover:bg-primary/10" 
             onClick={handleSave}
           >
             <Bookmark 
-              className="h-6 w-6" 
+              className={`h-5 w-5 ${saved ? 'fill-accent text-accent' : ''}`} 
               fill={saved ? "currentColor" : "none"}
             />
           </Button>
         </div>
         
-        <div className="space-y-1 w-full">
-          <p className="text-sm font-medium">{likesCount.toLocaleString()} curtidas</p>
+        <div className="space-y-2 w-full">
+          <p className="font-medium">{likesCount.toLocaleString()} likes</p>
           <Collapsible className="w-full">
             <div className="text-sm">
               <span className="font-medium">{post.username}</span>{" "}
               <span className="inline-block">
-                {post.caption.length > 60 ? (
+                {post.caption.length > 120 ? (
                   <>
-                    {post.caption.substring(0, 60)}
+                    {post.caption.substring(0, 120)}
                     <CollapsibleTrigger asChild>
                       <button className="text-muted-foreground font-medium ml-1">
-                        ... mais
+                        ... more
                       </button>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
-                      {post.caption.substring(60)}
+                      {post.caption.substring(120)}
                     </CollapsibleContent>
                   </>
                 ) : (
@@ -174,10 +175,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
               </span>
             </div>
           </Collapsible>
-          <p className="text-xs text-muted-foreground cursor-pointer hover:underline">
-            {post.comments > 0 && `Ver todos os ${post.comments} comentários`}
-          </p>
-          <p className="text-xs text-muted-foreground">{post.timestamp}</p>
+          {post.comments > 0 && (
+            <button className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              View all {post.comments} comments
+            </button>
+          )}
         </div>
       </CardFooter>
     </Card>

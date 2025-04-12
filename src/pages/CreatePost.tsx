@@ -15,8 +15,8 @@ const CreatePost: React.FC = () => {
   
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto px-4">
-        <h1 className="text-2xl font-bold mb-6 instagram-text-gradient">Criar nova publicação</h1>
+      <div className="max-w-3xl mx-auto">
+        <h1 className="text-2xl font-bold mb-6 brand-text-gradient">Create new post</h1>
         <CreatePostForm />
       </div>
     </MainLayout>

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
-import { Image as ImageIcon, Upload } from 'lucide-react';
+import { Image as ImageIcon, Upload, X } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const CreatePostForm: React.FC = () => {
@@ -28,6 +28,11 @@ const CreatePostForm: React.FC = () => {
     setPreviewUrl(e.target.value);
   };
 
+  const clearImage = () => {
+    setImageUrl('');
+    setPreviewUrl('');
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -35,8 +40,8 @@ const CreatePostForm: React.FC = () => {
     // Validate inputs
     if (!imageUrl || !caption) {
       toast({
-        title: "Erro ao criar post",
-        description: "Por favor, preencha todos os campos",
+        title: "Error creating post",
+        description: "Please fill in all fields",
         variant: "destructive",
       });
       setIsLoading(false);
@@ -46,8 +51,8 @@ const CreatePostForm: React.FC = () => {
     // Mock post creation
     setTimeout(() => {
       toast({
-        title: "Post criado",
-        description: "Seu post foi criado com sucesso",
+        title: "Post created",
+        description: "Your post has been published successfully",
       });
       setIsLoading(false);
       navigate('/');
@@ -55,65 +60,85 @@ const CreatePostForm: React.FC = () => {
   };
 
   return (
-    <Card className="max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle>Criar novo post</CardTitle>
+    <Card className="glass-card overflow-hidden">
+      <CardHeader className="pb-4">
+        <CardTitle>Create new post</CardTitle>
         <CardDescription>
-          Compartilhe uma foto nova com seus seguidores
+          Share a new photo with your followers
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium">URL da imagem</label>
-            <Input
-              placeholder="https://exemplo.com/imagem.jpg"
-              value={imageUrl}
-              onChange={handleImageChange}
-            />
+            <label className="text-sm font-medium">Image URL</label>
+            <div className="relative">
+              <Input
+                placeholder="https://example.com/image.jpg"
+                value={imageUrl}
+                onChange={handleImageChange}
+                className="pr-10"
+              />
+              {imageUrl && (
+                <button 
+                  type="button" 
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-destructive"
+                  onClick={clearImage}
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
             <p className="text-xs text-muted-foreground">
-              Cole a URL de uma imagem online para compartilhá-la
+              Paste an image URL to share it with your followers
             </p>
           </div>
 
           {previewUrl ? (
-            <div className="aspect-square relative overflow-hidden rounded-md border">
+            <div className="aspect-square relative overflow-hidden rounded-xl border">
               <img
                 src={previewUrl}
                 alt="Preview"
                 className="object-cover w-full h-full"
                 onError={() => setPreviewUrl('')}
               />
+              <button
+                type="button"
+                className="absolute top-3 right-3 bg-background/70 backdrop-blur-sm p-2 rounded-full hover:bg-background/90 transition-colors"
+                onClick={clearImage}
+              >
+                <X className="h-4 w-4" />
+              </button>
             </div>
           ) : (
-            <div className="aspect-square flex items-center justify-center rounded-md border bg-muted">
+            <div className="aspect-square flex items-center justify-center rounded-xl border bg-muted/30 dashed">
               <div className="flex flex-col items-center text-muted-foreground">
                 <ImageIcon className="h-16 w-16 mb-2" />
-                <p>Prévia da imagem</p>
+                <p>Image preview</p>
               </div>
             </div>
           )}
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Legenda</label>
+            <label className="text-sm font-medium">Caption</label>
             <Textarea
-              placeholder="Escreva uma legenda para seu post..."
+              placeholder="Write a caption for your post..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
               rows={3}
+              className="resize-none"
             />
           </div>
 
           <Button 
             type="submit" 
-            className="w-full instagram-gradient"
+            className="w-full brand-gradient"
             disabled={isLoading}
           >
             {isLoading ? (
-              <span>Publicando...</span>
+              <span>Publishing...</span>
             ) : (
               <span className="flex items-center">
-                <Upload className="mr-2 h-4 w-4" /> Publicar
+                <Upload className="mr-2 h-4 w-4" /> Publish
               </span>
             )}
           </Button>

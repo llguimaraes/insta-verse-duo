@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Grid, Bookmark, Settings } from 'lucide-react';
+import { Grid3X3, Bookmark, Settings, Users, ExternalLink } from 'lucide-react';
 import { mockPosts } from '@/components/post/PostsList';
 
 const Profile: React.FC = () => {
@@ -14,77 +14,110 @@ const Profile: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Profile Header */}
-        <div className="flex flex-col md:flex-row items-center md:items-start mb-8 gap-6">
-          <Avatar className="h-24 w-24 md:h-36 md:w-36">
-            <AvatarImage src={user?.profileImage} alt={user?.name} />
-            <AvatarFallback className="text-2xl">{user?.name?.[0]}</AvatarFallback>
-          </Avatar>
-          
-          <div className="flex flex-col items-center md:items-start space-y-4 flex-1">
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <h1 className="text-2xl font-bold">{user?.username}</h1>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm">
-                  Editar perfil
-                </Button>
-                <Button variant="ghost" size="icon" className="h-9 w-9">
-                  <Settings className="h-5 w-5" />
-                </Button>
+        <Card className="glass-card mb-8">
+          <CardContent className="p-8">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
+              <Avatar className="h-28 w-28 md:h-36 md:w-36 ring-4 ring-primary/20">
+                <AvatarImage src={user?.profileImage} alt={user?.name} />
+                <AvatarFallback className="text-3xl">{user?.name?.[0]}</AvatarFallback>
+              </Avatar>
+              
+              <div className="flex flex-col space-y-6 flex-1">
+                <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between gap-4">
+                  <div>
+                    <h1 className="text-2xl font-bold">{user?.username}</h1>
+                    <p className="text-muted-foreground">
+                      {user?.isAdmin ? "Administrator" : "Guest User"}
+                    </p>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" className="rounded-xl">
+                      Edit Profile
+                    </Button>
+                    <Button variant="ghost" size="icon" className="h-9 w-9 rounded-xl">
+                      <Settings className="h-5 w-5" />
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-4 text-center md:text-left">
+                  <div className="bg-muted/50 p-3 rounded-xl">
+                    <p className="font-semibold">{mockPosts.length}</p>
+                    <p className="text-xs text-muted-foreground">Posts</p>
+                  </div>
+                  <div className="bg-muted/50 p-3 rounded-xl">
+                    <p className="font-semibold">421</p>
+                    <p className="text-xs text-muted-foreground">Followers</p>
+                  </div>
+                  <div className="bg-muted/50 p-3 rounded-xl">
+                    <p className="font-semibold">265</p>
+                    <p className="text-xs text-muted-foreground">Following</p>
+                  </div>
+                  <div className="bg-muted/50 p-3 rounded-xl hidden md:block">
+                    <p className="font-semibold">18.5K</p>
+                    <p className="text-xs text-muted-foreground">Likes</p>
+                  </div>
+                </div>
+                
+                <div className="text-center md:text-left">
+                  <p className="font-semibold">{user?.name}</p>
+                  <p className="text-sm">
+                    {user?.isAdmin 
+                      ? "Building amazing experiences at VerseHub" 
+                      : "Exploring the VerseHub platform"}
+                  </p>
+                  <a href="#" className="text-primary text-sm flex items-center mt-1 justify-center md:justify-start">
+                    versehub.com <ExternalLink className="h-3 w-3 ml-1" />
+                  </a>
+                </div>
               </div>
             </div>
-            
-            <div className="flex space-x-8 text-center md:text-left">
-              <div>
-                <span className="font-semibold">{mockPosts.length}</span>{" "}
-                <span className="text-muted-foreground">posts</span>
-              </div>
-              <div>
-                <span className="font-semibold">421</span>{" "}
-                <span className="text-muted-foreground">seguidores</span>
-              </div>
-              <div>
-                <span className="font-semibold">265</span>{" "}
-                <span className="text-muted-foreground">seguindo</span>
-              </div>
-            </div>
-            
-            <div className="text-center md:text-left">
-              <p className="font-semibold">{user?.name}</p>
-              <p className="text-sm text-muted-foreground">
-                {user?.isAdmin 
-                  ? "Administrador do InstaVerse" 
-                  : "Usuário convidado do InstaVerse"}
-              </p>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
         
         {/* Profile Tabs & Content */}
-        <Tabs defaultValue="posts">
-          <TabsList className="w-full grid grid-cols-2 mb-6">
-            <TabsTrigger value="posts" className="flex items-center">
-              <Grid className="h-4 w-4 mr-2" />
+        <Tabs defaultValue="posts" className="mb-8">
+          <TabsList className="w-full grid grid-cols-3 mb-8 bg-muted/50 p-1 rounded-xl">
+            <TabsTrigger value="posts" className="rounded-lg data-[state=active]:bg-background data-[state=active]:text-primary flex items-center py-3">
+              <Grid3X3 className="h-4 w-4 mr-2" />
               <span>Posts</span>
             </TabsTrigger>
-            <TabsTrigger value="saved" className="flex items-center">
+            <TabsTrigger value="saved" className="rounded-lg data-[state=active]:bg-background data-[state=active]:text-primary flex items-center py-3">
               <Bookmark className="h-4 w-4 mr-2" />
-              <span>Salvos</span>
+              <span>Saved</span>
+            </TabsTrigger>
+            <TabsTrigger value="tagged" className="rounded-lg data-[state=active]:bg-background data-[state=active]:text-primary flex items-center py-3">
+              <Users className="h-4 w-4 mr-2" />
+              <span>Tagged</span>
             </TabsTrigger>
           </TabsList>
           
           <TabsContent value="posts">
-            <div className="grid grid-cols-3 gap-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {mockPosts.map((post) => (
-                <Card key={post.id} className="rounded-none overflow-hidden cursor-pointer hover:opacity-90 transition-opacity">
+                <Card key={post.id} className="overflow-hidden card-lift glass-card cursor-pointer">
                   <CardContent className="p-0">
-                    <div className="aspect-square w-full">
+                    <div className="aspect-square w-full relative group">
                       <img 
                         src={post.image} 
                         alt={post.caption} 
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                        <div className="flex items-center space-x-4 text-white">
+                          <div className="flex items-center">
+                            <Heart className="h-5 w-5 mr-2 fill-white" />
+                            <span>{post.likes}</span>
+                          </div>
+                          <div className="flex items-center">
+                            <MessageCircle className="h-5 w-5 mr-2 fill-white" />
+                            <span>{post.comments}</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -93,11 +126,21 @@ const Profile: React.FC = () => {
           </TabsContent>
           
           <TabsContent value="saved">
-            <div className="flex flex-col items-center justify-center py-12 text-center">
+            <div className="flex flex-col items-center justify-center py-16 text-center">
               <Bookmark className="h-16 w-16 mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-semibold">Itens salvos</h3>
+              <h3 className="text-xl font-semibold">Saved Items</h3>
               <p className="text-muted-foreground max-w-md mt-2">
-                Salve fotos e vídeos que você quer ver novamente. Ninguém será notificado, e apenas você pode ver o que salvou.
+                Save photos and videos that you want to see again. No one is notified, and only you can see what you've saved.
+              </p>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="tagged">
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <Users className="h-16 w-16 mb-4 text-muted-foreground" />
+              <h3 className="text-xl font-semibold">Tagged Posts</h3>
+              <p className="text-muted-foreground max-w-md mt-2">
+                When people tag you in photos and videos, they'll appear here.
               </p>
             </div>
           </TabsContent>

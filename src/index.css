@@ -5,7 +5,7 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,10 +14,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 328 100% 54%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 91% 60%;
+    --secondary: 199 89% 48%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --accent: 37 92% 50%;
@@ -31,9 +31,9 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 328 100% 54%;
+    --ring: 262 83% 58%;
 
-    --radius: 0.5rem;
+    --radius: 1rem;
   }
 
   .dark {
@@ -46,10 +46,10 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 328 100% 54%;
+    --primary: 262 83% 58%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 217 91% 60%;
+    --secondary: 199 89% 48%;
     --secondary-foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
@@ -63,7 +63,7 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 328 100% 54%;
+    --ring: 262 83% 58%;
   }
 }
 
@@ -77,17 +77,18 @@
   }
 }
 
-.instagram-gradient {
-  @apply bg-gradient-to-tr from-[#833ab4] via-[#fd1d1d] to-[#fcb045];
+/* Modern gradient for branding */
+.brand-gradient {
+  @apply bg-gradient-to-tr from-primary via-secondary to-accent;
 }
 
-.instagram-text-gradient {
-  @apply text-transparent bg-clip-text bg-gradient-to-tr from-[#833ab4] via-[#fd1d1d] to-[#fcb045];
+.brand-text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-tr from-primary via-secondary to-accent;
 }
 
 /* Card hover effects */
 .post-card-hover {
-  @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
 }
 
 /* Animation for likes */
@@ -124,10 +125,25 @@
 
 /* Glass effect for cards */
 .glass-card {
-  @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
 }
 
-/* Image overlays */
+/* Modern image overlays */
 .image-overlay {
   @apply absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 hover:opacity-100;
+}
+
+/* Animated button effects */
+.button-hover-effect {
+  @apply relative overflow-hidden transition-all duration-300 hover:shadow-md after:absolute after:inset-0 after:w-full after:h-full after:bg-white/20 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300;
+}
+
+/* Subtle card effect */
+.card-lift {
+  @apply transition-all duration-200 hover:-translate-y-1 hover:shadow-lg;
+}
+
+/* Floating action button */
+.floating-action-button {
+  @apply fixed bottom-6 right-6 rounded-full p-4 shadow-lg brand-gradient text-white flex items-center justify-center;
 }
