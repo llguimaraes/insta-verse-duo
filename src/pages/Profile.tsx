@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Grid3X3, Bookmark, Settings, Users, ExternalLink } from 'lucide-react';
+import { Grid3X3, Bookmark, Settings, Users, ExternalLink, Heart, MessageCircle } from 'lucide-react';
 import { mockPosts } from '@/components/post/PostsList';
 
 const Profile: React.FC = () => {
