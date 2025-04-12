@@ -1,4 +1,3 @@
-
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -23,7 +22,7 @@ const Profile: React.FC = () => {
     <MainLayout>
       <div className="max-w-5xl mx-auto">
         {/* Profile Header */}
-        <Card className="glass-card mb-6 md:mb-8">
+        <Card className="glass-card rounded-3xl mb-6 md:mb-8">
           <CardContent className={`p-4 ${isMobile ? 'py-5' : 'p-8'}`}>
             <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8">
               <Avatar className="h-24 w-24 md:h-28 md:w-28 lg:h-36 lg:w-36 ring-4 ring-primary/20">
@@ -108,7 +107,7 @@ const Profile: React.FC = () => {
           <TabsContent value="posts">
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
               {mockPosts.map((post) => (
-                <Card key={post.id} className="overflow-hidden card-lift glass-card cursor-pointer">
+                <Card key={post.id} className="overflow-hidden card-lift glass-card cursor-pointer rounded-2xl">
                   <CardContent className="p-0">
                     <div className="aspect-square w-full relative group">
                       <img 

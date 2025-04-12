@@ -138,6 +138,19 @@
   @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
 }
 
+/* Rounded corners for UI elements */
+.rounded-card {
+  @apply rounded-3xl overflow-hidden;
+}
+
+.rounded-image {
+  @apply rounded-2xl overflow-hidden;
+}
+
+.rounded-btn {
+  @apply rounded-xl;
+}
+
 /* Modern image overlays */
 .image-overlay {
   @apply absolute inset-0 bg-black/0 hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 hover:opacity-100;

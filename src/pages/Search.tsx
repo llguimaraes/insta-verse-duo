@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { Input } from '@/components/ui/input';
@@ -12,13 +11,11 @@ import { Button } from '@/components/ui/button';
 const Search: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Mock search results based on query
   const filteredPosts = mockPosts.filter(post => 
     post.username.toLowerCase().includes(searchQuery.toLowerCase()) || 
     post.caption.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Extract hashtags from captions
   const extractHashtags = () => {
     const hashtagRegex = /#(\w+)/g;
     const hashtags = new Set<string>();
@@ -33,7 +30,6 @@ const Search: React.FC = () => {
     return Array.from(hashtags).slice(0, 6);
   };
 
-  // Get trending hashtags
   const trendingHashtags = extractHashtags();
 
   return (
@@ -71,7 +67,7 @@ const Search: React.FC = () => {
               <TabsContent value="all">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredPosts.map(post => (
-                    <Card key={post.id} className="overflow-hidden cursor-pointer card-lift glass-card">
+                    <Card key={post.id} className="overflow-hidden cursor-pointer card-lift glass-card rounded-2xl">
                       <CardContent className="p-0">
                         <div className="aspect-square relative group">
                           <img 
@@ -100,7 +96,7 @@ const Search: React.FC = () => {
                   {Array.from(new Set(filteredPosts.map(post => post.username))).map((username, index) => {
                     const post = filteredPosts.find(p => p.username === username);
                     return (
-                      <Card key={index} className="glass-card">
+                      <Card key={index} className="glass-card rounded-xl">
                         <CardContent className="p-4">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
@@ -129,7 +125,7 @@ const Search: React.FC = () => {
               <TabsContent value="posts">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {filteredPosts.map(post => (
-                    <Card key={post.id} className="overflow-hidden cursor-pointer card-lift glass-card">
+                    <Card key={post.id} className="overflow-hidden cursor-pointer card-lift glass-card rounded-2xl">
                       <CardContent className="p-0">
                         <div className="aspect-square w-full">
                           <img 
@@ -157,7 +153,7 @@ const Search: React.FC = () => {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {trendingHashtags.map((tag, index) => (
-                  <Card key={index} className="overflow-hidden cursor-pointer card-lift glass-card">
+                  <Card key={index} className="overflow-hidden cursor-pointer card-lift glass-card rounded-xl">
                     <CardContent className="p-4">
                       <div className="flex items-center">
                         <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mr-3">
@@ -186,7 +182,7 @@ const Search: React.FC = () => {
                 {[...new Map(mockPosts.map(post => 
                   [post.username, { username: post.username, image: post.userImage, caption: post.caption }]
                 )).values()].map((user, index) => (
-                  <Card key={index} className="glass-card">
+                  <Card key={index} className="glass-card rounded-xl">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center">

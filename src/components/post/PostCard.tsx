@@ -77,7 +77,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const captionTruncateLength = isMobile ? 80 : 120;
 
   return (
-    <Card className="mb-6 md:mb-8 overflow-hidden rounded-2xl glass-card post-card-hover">
+    <Card className="mb-6 md:mb-8 overflow-hidden rounded-3xl glass-card post-card-hover">
       <CardHeader className="p-3 md:p-4 flex flex-row items-center space-y-0">
         <div className="flex items-center flex-1">
           <Avatar className="h-8 w-8 md:h-10 md:w-10 mr-2 md:mr-3 ring-2 ring-primary/20">
