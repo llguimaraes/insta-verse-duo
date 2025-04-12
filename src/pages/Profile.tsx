@@ -8,9 +8,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Grid3X3, Bookmark, Settings, Users, ExternalLink, Heart, MessageCircle } from 'lucide-react';
 import { mockPosts } from '@/components/post/PostsList';
+import Typewriter from '@/components/ui/typewriter';
 
 const Profile: React.FC = () => {
   const { user } = useAuth();
+
+  const bioTexts = user?.isAdmin 
+    ? ["Building amazing experiences at VerseHub", "Creating digital connections", "Sharing stories that matter"]
+    : ["Exploring the VerseHub platform", "Discovering new content", "Connecting with creators"];
 
   return (
     <MainLayout>
@@ -65,9 +70,12 @@ const Profile: React.FC = () => {
                 <div className="text-center md:text-left">
                   <p className="font-semibold">{user?.name}</p>
                   <p className="text-sm">
-                    {user?.isAdmin 
-                      ? "Building amazing experiences at VerseHub" 
-                      : "Exploring the VerseHub platform"}
+                    <Typewriter 
+                      texts={bioTexts} 
+                      className="text-primary font-medium"
+                      speed={60}
+                      delay={2000}
+                    />
                   </p>
                   <a href="#" className="text-primary text-sm flex items-center mt-1 justify-center md:justify-start">
                     versehub.com <ExternalLink className="h-3 w-3 ml-1" />

@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { mockPosts } from '@/components/post/PostsList';
 import { useAuth } from '@/contexts/AuthContext';
 import { Sparkles } from 'lucide-react';
+import Typewriter from '@/components/ui/typewriter';
 
 const Home: React.FC = () => {
   const { user } = useAuth();
@@ -17,9 +18,33 @@ const Home: React.FC = () => {
     [post.username, { username: post.username, image: post.userImage }]
   )).values()].slice(0, 5);
 
+  const welcomeTexts = [
+    "Bem-vindo ao VerseHub!",
+    "Compartilhe seus momentos...",
+    "Conecte-se com amigos...",
+    "Descubra novos conteúdos...",
+    "Inspire-se com histórias...",
+  ];
+
   return (
     <MainLayout>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-7xl mx-auto pt-4">
+        {/* Welcome Typewriter Banner */}
+        <div className="lg:col-span-12 mb-2">
+          <Card className="glass-card overflow-hidden">
+            <CardContent className="p-4 flex items-center justify-center">
+              <h2 className="text-xl md:text-2xl font-medium text-center">
+                <Typewriter 
+                  texts={welcomeTexts} 
+                  className="brand-text-gradient font-bold"
+                  speed={50}
+                  delay={1500}
+                />
+              </h2>
+            </CardContent>
+          </Card>
+        </div>
+        
         {/* Main content - Posts */}
         <div className="lg:col-span-7 xl:col-span-8 space-y-4">
           <div className="flex items-center justify-between mb-6">
