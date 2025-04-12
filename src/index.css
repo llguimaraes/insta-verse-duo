@@ -157,3 +157,37 @@
 .floating-action-button {
   @apply fixed bottom-6 right-6 rounded-full p-4 shadow-lg brand-gradient text-white flex items-center justify-center;
 }
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .mobile-card {
+    @apply rounded-xl shadow-sm;
+  }
+  
+  .mobile-padding {
+    @apply p-3;
+  }
+  
+  .mobile-text {
+    @apply text-sm;
+  }
+  
+  .mobile-scroll-container {
+    @apply overflow-x-auto scrollbar-thin pb-2 snap-x;
+  }
+  
+  .mobile-scroll-item {
+    @apply flex-shrink-0 snap-start;
+  }
+}
+
+/* Tablet-specific styles */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .tablet-columns {
+    @apply grid-cols-2;
+  }
+  
+  .tablet-sidebar {
+    @apply px-4;
+  }
+}

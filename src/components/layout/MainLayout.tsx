@@ -19,7 +19,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-background">
       <div className="flex-1 flex flex-col md:flex-row">
         <Navbar />
-        <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full">
+        <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full md:pt-4 pt-16 pb-20 md:pb-6">
           {children}
         </main>
       </div>
