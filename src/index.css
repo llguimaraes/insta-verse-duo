@@ -1,11 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
+    --background: 352 84% 57%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -14,13 +13,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 262 83% 58%;
+    --primary: 199 89% 48%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 199 89% 48%;
+    --secondary: 84 96% 59%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
-    --accent: 37 92% 50%;
+    --accent: 352 84% 57%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -31,7 +30,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
+    --ring: 199 89% 48%;
 
     --radius: 1rem;
   }
@@ -84,6 +83,15 @@
 
 .brand-text-gradient {
   @apply text-transparent bg-clip-text bg-gradient-to-tr from-primary via-secondary to-accent;
+}
+
+/* KROWD specific gradients */
+.krowd-gradient {
+  @apply bg-gradient-to-tr from-[#1EAEDB] via-[#F2FC2E] to-[#EA384C];
+}
+
+.krowd-text-gradient {
+  @apply text-transparent bg-clip-text bg-gradient-to-tr from-[#1EAEDB] via-[#F2FC2E] to-[#EA384C];
 }
 
 /* Card hover effects */

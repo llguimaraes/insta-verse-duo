@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Home, Search, PlusSquare, User, LogOut, Menu, X } from 'lucide-react';
@@ -11,18 +10,14 @@ const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-
   return (
     <>
       {/* Desktop Sidebar */}
       <div className="hidden md:flex flex-col h-screen border-r bg-card/60 backdrop-blur-sm w-[70px] lg:w-[240px] py-6 shadow-sm">
         <div className="px-4 mb-8">
-          <NavLink to="/" className="text-xl font-bold brand-text-gradient hidden lg:block">
-            VerseHub
-          </NavLink>
-          <NavLink to="/" className="text-xl font-bold brand-text-gradient lg:hidden flex justify-center">
-            VH
+          <NavLink to="/" className="flex items-center justify-center lg:justify-start space-x-2">
+            <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-8 w-8" />
+            <span className="text-xl font-bold krowd-text-gradient hidden lg:block">KROWD</span>
           </NavLink>
         </div>
         
@@ -106,10 +101,11 @@ const Navbar: React.FC = () => {
       {/* Mobile Top Nav */}
       <div className="fixed top-0 left-0 right-0 bg-card/80 backdrop-blur-md border-b z-50 md:hidden">
         <div className="flex justify-between items-center px-4 py-3">
-          <NavLink to="/" className="text-xl font-bold brand-text-gradient">
-            VerseHub
+          <NavLink to="/" className="flex items-center space-x-2">
+            <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-6 w-6" />
+            <span className="text-xl font-bold krowd-text-gradient">KROWD</span>
           </NavLink>
-          <Button variant="ghost" size="icon" onClick={toggleMobileMenu}>
+          <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>

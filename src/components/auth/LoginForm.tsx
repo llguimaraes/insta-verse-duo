@@ -4,7 +4,6 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Instagram } from 'lucide-react';
 
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -28,9 +27,9 @@ const LoginForm: React.FC = () => {
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="space-y-1 text-center">
         <div className="flex justify-center mb-4">
-          <Instagram size={48} className="instagram-text-gradient" />
+          <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-24 w-24" />
         </div>
-        <CardTitle className="text-2xl font-bold">InstaVerse</CardTitle>
+        <CardTitle className="text-2xl font-bold krowd-text-gradient">KROWD</CardTitle>
         <CardDescription>
           Entre com suas credenciais para acessar
         </CardDescription>
@@ -44,6 +43,7 @@ const LoginForm: React.FC = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              className="border-primary/20 focus:border-primary"
             />
           </div>
           <div className="space-y-2">
@@ -54,11 +54,12 @@ const LoginForm: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="border-primary/20 focus:border-primary"
             />
           </div>
           <div className="pt-2">
             <Button
-              className="w-full instagram-gradient"
+              className="w-full krowd-gradient text-white hover:opacity-90 transition-opacity"
               disabled={isLoading}
               type="submit"
             >
