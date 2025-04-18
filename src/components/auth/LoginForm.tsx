@@ -31,6 +31,7 @@ const LoginForm: React.FC = () => {
             src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
             alt="KROWD" 
             className="h-24 w-24 object-contain" 
+            style={{ background: 'transparent' }} 
           />
         </div>
         <CardTitle className="text-2xl font-bold text-[#1EAEDB]">KROWD</CardTitle>

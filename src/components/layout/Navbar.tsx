@@ -16,8 +16,13 @@ const Navbar: React.FC = () => {
       <div className="hidden md:flex flex-col h-screen border-r bg-card/60 backdrop-blur-sm w-[70px] lg:w-[240px] py-6 shadow-sm">
         <div className="px-4 mb-8">
           <NavLink to="/" className="flex items-center justify-center lg:justify-start space-x-2">
-            <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-8 w-8" />
-            <span className="text-xl font-bold krowd-text-gradient hidden lg:block">KROWD</span>
+            <img 
+              src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+              alt="KROWD" 
+              className="h-8 w-8" 
+              style={{ background: 'transparent' }} 
+            />
+            <span className="text-xl font-bold text-[#1EAEDB] hidden lg:block">KROWD</span>
           </NavLink>
         </div>
         
@@ -102,8 +107,13 @@ const Navbar: React.FC = () => {
       <div className="fixed top-0 left-0 right-0 bg-card/80 backdrop-blur-md border-b z-50 md:hidden">
         <div className="flex justify-between items-center px-4 py-3">
           <NavLink to="/" className="flex items-center space-x-2">
-            <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-6 w-6" />
-            <span className="text-xl font-bold krowd-text-gradient">KROWD</span>
+            <img 
+              src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+              alt="KROWD" 
+              className="h-6 w-6" 
+              style={{ background: 'transparent' }} 
+            />
+            <span className="text-xl font-bold text-[#1EAEDB]">KROWD</span>
           </NavLink>
           <Button variant="ghost" size="icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
