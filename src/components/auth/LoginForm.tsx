@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -28,7 +27,7 @@ const LoginForm: React.FC = () => {
       <CardHeader className="space-y-1 text-center">
         <div className="flex justify-center mb-4">
           <img 
-            src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+            src="/lovable-uploads/f22a8468-8e6e-403e-8eb1-f3dba93133c6.png" 
             alt="KROWD" 
             className="h-24 w-24 object-contain" 
             style={{ background: 'transparent' }} 

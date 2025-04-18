@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
         <div className="px-4 mb-8">
           <NavLink to="/" className="flex items-center justify-center lg:justify-start space-x-2">
             <img 
-              src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+              src="/lovable-uploads/f22a8468-8e6e-403e-8eb1-f3dba93133c6.png" 
               alt="KROWD" 
               className="h-8 w-8" 
               style={{ background: 'transparent' }} 
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center px-4 py-3">
           <NavLink to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+              src="/lovable-uploads/f22a8468-8e6e-403e-8eb1-f3dba93133c6.png" 
               alt="KROWD" 
               className="h-6 w-6" 
               style={{ background: 'transparent' }} 
