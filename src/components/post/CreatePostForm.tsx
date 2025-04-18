@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -37,22 +36,20 @@ const CreatePostForm: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Validate inputs
     if (!imageUrl || !caption) {
       toast({
-        title: "Error creating post",
-        description: "Please fill in all fields",
+        title: "Erro ao criar postagem",
+        description: "Por favor, preencha todos os campos",
         variant: "destructive",
       });
       setIsLoading(false);
       return;
     }
 
-    // Mock post creation
     setTimeout(() => {
       toast({
-        title: "Post created",
-        description: "Your post has been published successfully",
+        title: "Postagem criada",
+        description: "Sua postagem foi publicada com sucesso",
       });
       setIsLoading(false);
       navigate('/');
@@ -62,18 +59,18 @@ const CreatePostForm: React.FC = () => {
   return (
     <Card className="glass-card overflow-hidden">
       <CardHeader className="pb-4">
-        <CardTitle>Create new post</CardTitle>
+        <CardTitle>Criar nova postagem</CardTitle>
         <CardDescription>
-          Share a new photo with your followers
+          Compartilhe uma nova foto com seus seguidores
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Image URL</label>
+            <label className="text-sm font-medium">URL da Imagem</label>
             <div className="relative">
               <Input
-                placeholder="https://example.com/image.jpg"
+                placeholder="https://exemplo.com/imagem.jpg"
                 value={imageUrl}
                 onChange={handleImageChange}
                 className="pr-10"
@@ -89,7 +86,7 @@ const CreatePostForm: React.FC = () => {
               )}
             </div>
             <p className="text-xs text-muted-foreground">
-              Paste an image URL to share it with your followers
+              Cole a URL de uma imagem para compartilhar com seus seguidores
             </p>
           </div>
 
@@ -97,7 +94,7 @@ const CreatePostForm: React.FC = () => {
             <div className="aspect-square relative overflow-hidden rounded-xl border">
               <img
                 src={previewUrl}
-                alt="Preview"
+                alt="Prévia"
                 className="object-cover w-full h-full"
                 onError={() => setPreviewUrl('')}
               />
@@ -113,15 +110,15 @@ const CreatePostForm: React.FC = () => {
             <div className="aspect-square flex items-center justify-center rounded-xl border bg-muted/30 dashed">
               <div className="flex flex-col items-center text-muted-foreground">
                 <ImageIcon className="h-16 w-16 mb-2" />
-                <p>Image preview</p>
+                <p>Prévia da imagem</p>
               </div>
             </div>
           )}
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Caption</label>
+            <label className="text-sm font-medium">Legenda</label>
             <Textarea
-              placeholder="Write a caption for your post..."
+              placeholder="Escreva uma legenda para sua postagem..."
               value={caption}
               onChange={(e) => setCaption(e.target.value)}
               rows={3}
@@ -135,10 +132,10 @@ const CreatePostForm: React.FC = () => {
             disabled={isLoading}
           >
             {isLoading ? (
-              <span>Publishing...</span>
+              <span>Publicando...</span>
             ) : (
               <span className="flex items-center">
-                <Upload className="mr-2 h-4 w-4" /> Publish
+                <Upload className="mr-2 h-4 w-4" /> Publicar
               </span>
             )}
           </Button>

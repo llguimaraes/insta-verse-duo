@@ -1,8 +1,6 @@
-
 import React from 'react';
 import PostCard, { Post } from './PostCard';
 
-// Mock data for posts
 export const mockPosts: Post[] = [
   {
     id: '1',

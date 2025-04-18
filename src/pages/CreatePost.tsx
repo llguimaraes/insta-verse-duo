@@ -8,7 +8,6 @@ import { Navigate } from 'react-router-dom';
 const CreatePost: React.FC = () => {
   const { user } = useAuth();
   
-  // Redirect non-admin users
   if (!user?.isAdmin) {
     return <Navigate to="/" />;
   }
@@ -16,7 +15,7 @@ const CreatePost: React.FC = () => {
   return (
     <MainLayout>
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6 brand-text-gradient">Create new post</h1>
+        <h1 className="text-2xl font-bold mb-6 brand-text-gradient">Criar nova postagem</h1>
         <CreatePostForm />
       </div>
     </MainLayout>
