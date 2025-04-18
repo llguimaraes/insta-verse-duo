@@ -27,9 +27,13 @@ const LoginForm: React.FC = () => {
     <Card className="w-full max-w-md mx-auto">
       <CardHeader className="space-y-1 text-center">
         <div className="flex justify-center mb-4">
-          <img src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" alt="KROWD" className="h-24 w-24" />
+          <img 
+            src="/lovable-uploads/415c1c69-fb4a-49f5-9a81-a1b64ff6a1ce.png" 
+            alt="KROWD" 
+            className="h-24 w-24 object-contain" 
+          />
         </div>
-        <CardTitle className="text-2xl font-bold krowd-text-gradient">KROWD</CardTitle>
+        <CardTitle className="text-2xl font-bold text-[#1EAEDB]">KROWD</CardTitle>
         <CardDescription>
           Entre com suas credenciais para acessar
         </CardDescription>

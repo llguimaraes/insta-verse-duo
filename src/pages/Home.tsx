@@ -1,4 +1,3 @@
-
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import PostsList from '@/components/post/PostsList';
@@ -16,20 +15,18 @@ const Home: React.FC = () => {
   const isMobile = useIsMobile();
   const isTablet = useIsTablet();
   
-  // Take first 5 users for suggestions
   const suggestedUsers = [...new Map(mockPosts.map(post => 
     [post.username, { username: post.username, image: post.userImage }]
   )).values()].slice(0, 5);
 
   const welcomeTexts = [
-    "Bem-vindo ao VerseHub!",
-    "Compartilhe seus momentos...",
+    "Bem-vindo ao KROWD!",
+    "Compartilhe suas histórias...",
     "Conecte-se com amigos...",
-    "Descubra novos conteúdos...",
-    "Inspire-se com histórias...",
+    "Inspire novas ideias...",
+    "Faça parte da comunidade...",
   ];
 
-  // Show fewer suggested users on mobile
   const displayedUsers = isMobile ? suggestedUsers.slice(0, 3) : suggestedUsers;
 
   return (
@@ -42,7 +39,7 @@ const Home: React.FC = () => {
               <h2 className="text-lg md:text-xl lg:text-2xl font-medium text-center">
                 <Typewriter 
                   texts={welcomeTexts} 
-                  className="brand-text-gradient font-bold"
+                  className="text-[#1EAEDB] font-bold"
                   speed={50}
                   delay={1500}
                 />
